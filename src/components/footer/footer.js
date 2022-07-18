@@ -34,7 +34,7 @@ function Footer() {
 				{/* <img src="..//logo.jpg" className="udemyLogo" alt="logo"></img> */}
 				<h3>Tech99</h3>
 				<div className="copyrightDiv">
-					<p>© 2020 Tech99, Inc.</p>
+					<p>© 2022 Tech99, Inc.</p>
 				</div>
 			</div>
 		</div>
