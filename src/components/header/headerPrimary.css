@@ -114,8 +114,9 @@ textarea:focus, input:focus{
 }
 
 .headerPrimary .icon {
-  color: #73726c;
+  color: black;
   cursor: pointer;
+  margin-left: 20px;
 }
 
 .headerPrimary .icon:hover {

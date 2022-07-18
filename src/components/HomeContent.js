@@ -19,10 +19,10 @@ function HomeContent() {
 			<Feature2 />
 			<FillerDiv />
 			{/* <TopCategories /> */}
-			<BecomeInstructor />
+			{/* <BecomeInstructor /> */}
 			<TrustedCompanies />
-			<UdemyForBusiness />
-			<VideoAdDiv />
+			{/* <UdemyForBusiness /> */}
+			{/* <VideoAdDiv /> */}
 		</div>
 	);
 }

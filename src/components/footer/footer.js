@@ -4,7 +4,7 @@ import "../../components/footer/footer.css";
 function Footer() {
 	return (
 		<div className="footer">
-			<div className="upperDiv">
+			{/* <div className="upperDiv">
 				<div className="linksContainer">
 					<div className="linksDiv linksDiv1">
 						<p>Tech99 for Business</p>
@@ -29,7 +29,7 @@ function Footer() {
 					</div>
 				</div>
 				<div className="linksDiv linksDiv4"></div>
-			</div>
+			</div> */}
 			<div className="lowerDiv">
 				{/* <img src="..//logo.jpg" className="udemyLogo" alt="logo"></img> */}
 				<h3>Tech99</h3>

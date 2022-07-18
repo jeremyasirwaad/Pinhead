@@ -22,12 +22,12 @@ function HeaderPrimary() {
 				<input className="searchBar" placeholder="Search for anything"></input>
 			</div>
 			<div className="right part">
-				<div className="businessDiv">
+				{/* <div className="businessDiv">
 					<span className="business">Busniess</span>
 				</div>
 				<div className="businessDiv">
 					<span className="teach">Teach on 99Tech</span>
-				</div>
+				</div> */}
 				<div className="cartDiv">
 					<ShoppingCartOutlinedIcon className="icon" />
 				</div>

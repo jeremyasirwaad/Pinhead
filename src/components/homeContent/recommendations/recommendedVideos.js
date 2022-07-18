@@ -54,7 +54,7 @@ function RecommendedVideos(props) {
 						instructor={"Kyle Pew, Office Newb LLC"}
 						rating={4.6}
 						noOfStudents={"(166,042)"}
-						price={"₹8,640"}
+						price={"$0.99"}
 					/>
 					<VideoCard
 						courseTitle={
@@ -66,7 +66,7 @@ function RecommendedVideos(props) {
 						instructor={"Rob Percival, Daragh Walsh, Codestars by Rob Percival"}
 						rating={4.4}
 						noOfStudents={"(116,637)"}
-						price={"₹8,640"}
+						price={"$0.99"}
 					/>
 					<VideoCard
 						courseTitle={
@@ -78,7 +78,7 @@ function RecommendedVideos(props) {
 						instructor={"Dr. Anglea Yu"}
 						rating={4.8}
 						noOfStudents={"(49,923)"}
-						price={"₹8,960"}
+						price={"$0.99"}
 					/>
 					<VideoCard
 						courseTitle={
@@ -90,7 +90,7 @@ function RecommendedVideos(props) {
 						instructor={"Neil Anderson"}
 						rating={4.8}
 						noOfStudents={"(25,489)"}
-						price={"₹1,280"}
+						price={"$0.99"}
 					/>
 				</div>
 			)}
