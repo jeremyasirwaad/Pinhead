@@ -1,0 +1,131 @@
+.headerPrimary {
+  color: #000000;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #ffa743;
+  border: none;
+  align-items: center;
+  height: 72px;
+  padding: 0px 10px;
+  font-size: 14px;
+  letter-spacing: normal;
+  box-shadow: 0px 1px 6px rgb(199, 198, 198);
+}
+
+.headerPrimary .logo {
+  height: 32px;
+  width: 110px;
+}
+
+.headerPrimary .udemyLogo {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.headerPrimary .part {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.headerPrimary .part * {
+  margin: 0px 5px;
+}
+
+.headerPrimary .mid {
+  width: 45%;
+  position: relative;
+}
+
+.headerPrimary .searchBar {
+  border-radius: 10px;
+  border: 1px #64635e solid;
+  font-size: 0.9rem;
+  height: 45px;
+  width: 100%;
+  padding-left: 7%;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+.headerPrimary .searchIcon {
+  height: 48px;
+  width: 50px;
+  position: absolute;
+  left: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.businessDiv, .categories{
+  width: 100px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-weight: 500;
+
+}
+
+.business
+{
+  text-align: left;
+}
+
+
+
+.headerPrimary .button {
+  /* border-radius: 5px; */
+  font-size: 15px;
+  font-weight: bold;
+  border: 1px solid #1A4D2E;
+  height: 36px;
+  width: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.headerPrimary .login {
+  background-color: white;
+  color: #1A4D2E;
+  border-color: #1A4D2E;
+}
+
+.headerPrimary .login:hover {
+  color: #1A4D2E;
+  border-color: #1A4D2E;
+}
+
+.headerPrimary .signup {
+  background-color: #1A4D2E;
+  color: white;
+  border-color: #1A4D2E;
+}
+
+.headerPrimary .signup:hover {
+  background-color: #1A4D2E;
+  border-color: #1A4D2E;
+}
+
+.headerPrimary .icon {
+  color: #73726c;
+  cursor: pointer;
+}
+
+.headerPrimary .icon:hover {
+  color: #1A4D2E;
+}
+
+.headerPrimary span {
+  cursor: pointer;
+}
+
+.headerPrimary span:hover {
+  color: #1A4D2E;
+}
