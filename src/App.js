@@ -16,28 +16,28 @@ import HomeContent from "./components/HomeContent";
 // import VideoAdDiv from "./videoAdDiv";
 import HomeFooter from "./components/HomeFooter";
 // import Footer from "./footer";
+import Home from "./components/Home/Home";
+import { Search } from "./components/Search/Search";
+import {
+	BrowserRouter as Router,
+	Routes,
+	Route,
+	Link,
+	Outlet
+} from "react-router-dom";
 
 function App() {
-  return (
-    <div className="App">
-      <Header />
-      {/* <HeaderPopup />
-      <HeaderPrimary /> */}
-      <HomeContent />
-      {/* <AdImage />
-      <Feature1 />
-      <Recommendations />
-      <Feature2 />
-      <FillerDiv />
-      <TopCategories />
-      <BecomeInstructor />
-      <TrustedCompanies />
-      <UdemyForBusiness />
-      <VideoAdDiv /> */}
-      <HomeFooter />
-      {/* <Footer /> */}
-    </div>
-  );
+	return (
+		<Router>
+			<Routes>
+				<Route path="/" element={<Home />} />
+				<Route path="/search" element={<Search />} />
+
+				{/* <Route path="invoices" element={<Invoices />} /> */}
+				{/* <Route path="dashboard" element={<Dashboard />} /> */}
+			</Routes>
+		</Router>
+	);
 }
 
 export default App;
