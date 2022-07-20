@@ -4,7 +4,8 @@ module.exports = (async () => {
 	const TYPESENSE_CONFIG = {
 		nodes: [
 			{
-				host: "localhost",
+				host: "54.67.113.46",
+				// host: "localhost",
 				port: "8108",
 				protocol: "http"
 			}
@@ -93,7 +94,7 @@ module.exports = (async () => {
 		}
 	} catch (err) {
 		console.error(err);
-	}
+	} 
 	console.log("Creating schema...");
 	console.log(JSON.stringify(schema, null, 2));
 	await typesense.collections().create(schema);

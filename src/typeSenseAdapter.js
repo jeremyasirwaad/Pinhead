@@ -3,13 +3,14 @@ import TypesenseInstantsearchAdapter from "typesense-instantsearch-adapter";
 let TYPESENSE_SERVER_CONFIG = {
 	nodes: [
 		{
-			host: "localhost",
+			// host: "localhost",
+			host: "54.67.113.46",
 			port: "8108",
 			protocol: "http"
 		}
 	],
 	apiKey: "xyz",
-	connectionTimeoutSeconds: 1,
+	connectionTimeoutSeconds: 5,
 	numRetries: 8
 };
 
@@ -23,5 +24,4 @@ export const typesenseAdaptor = new TypesenseInstantsearchAdapter({
 	}
 });
 
-
-export const searchClient = typesenseAdaptor.searchClient
+export const searchClient = typesenseAdaptor.searchClient;
