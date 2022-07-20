@@ -4,7 +4,7 @@ let TYPESENSE_SERVER_CONFIG = {
 	nodes: [
 		{
 			// host: "localhost",
-			host: "54.67.113.46",
+			host: "54.193.226.188",
 			port: "443",
 			protocol: "http"
 		}

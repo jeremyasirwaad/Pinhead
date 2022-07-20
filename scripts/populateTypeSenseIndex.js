@@ -4,7 +4,7 @@ module.exports = (async () => {
 	const TYPESENSE_CONFIG = {
 		nodes: [
 			{
-				host: "54.67.113.46",
+				host: "54.193.226.188",
 				// host: "localhost",
 				port: "443",
 				protocol: "http"
