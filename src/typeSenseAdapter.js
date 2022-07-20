@@ -5,7 +5,7 @@ let TYPESENSE_SERVER_CONFIG = {
 		{
 			// host: "localhost",
 			host: "54.67.113.46",
-			port: "8108",
+			port: "443",
 			protocol: "https"
 		}
 	],

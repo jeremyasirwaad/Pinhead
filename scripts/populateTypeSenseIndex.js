@@ -6,7 +6,7 @@ module.exports = (async () => {
 			{
 				host: "54.67.113.46",
 				// host: "localhost",
-				port: "8108",
+				port: "443",
 				protocol: "http"
 			}
 		],
