@@ -171,4 +171,4 @@ export const Search = () => {
 			{/* <HomeFooter /> */}
 		</div>
 	);
-};
+}
