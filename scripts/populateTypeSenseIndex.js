@@ -94,7 +94,7 @@ module.exports = (async () => {
 		}
 	} catch (err) {
 		console.error(err);
-	} 
+	}
 	console.log("Creating schema...");
 	console.log(JSON.stringify(schema, null, 2));
 	await typesense.collections().create(schema);
