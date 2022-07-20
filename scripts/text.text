@@ -1,0 +1,65 @@
+{
+		name: "courses",
+		num_documents: 0,
+		feilds: [
+			{
+				name: "courseTitle",
+				type: "string",
+				facet: false
+			},
+			{
+				name: "title",
+				type: "string",
+				facet: true
+			},
+			{
+				name: "title.lvl0",
+				type: "string[]",
+				facet: true
+			},
+			{
+				name: "title.lvl1",
+				type: "string[]",
+				facet: true,
+				optional: true
+			},
+			{
+				name: "title.lvl2",
+				type: "string[]",
+				facet: true,
+				optional: true
+			},
+			{
+				name: "dateuploaded",
+				type: "string[]",
+				facet: true
+			},
+			{
+				name: "rating",
+				type: "float",
+				facet: true
+			},
+			{
+				name: "price",
+				type: "double",
+				facet: true
+			},
+			{
+				name: "noOfStudents",
+				type: "int",
+				facet: true
+			},
+			{
+				name: "imgSrc",
+				type: "string",
+				facet: true
+			},
+			{
+				name: "instructor",
+				type: "string",
+				facet: true
+			}
+		],
+
+		default_sorting_field: "noOfStudents"
+	};
