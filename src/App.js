@@ -4,6 +4,7 @@ import Header from "./components/Header";
 // import HeaderPopup from "./headerPopup";
 // import HeaderPrimary from "./headerPrimary";
 import HomeContent from "./components/HomeContent";
+import { Login } from "./components/loginpage/Login";
 // import AdImage from "./adImage";
 // import Feature1 from "./featureDiv1";
 // import Feature2 from "./featureDiv2";
@@ -32,7 +33,7 @@ function App() {
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/search" element={<Search />} />
-
+				<Route path="/login" element={<Login />}></Route>
 				{/* <Route path="invoices" element={<Invoices />} /> */}
 				{/* <Route path="dashboard" element={<Dashboard />} /> */}
 			</Routes>

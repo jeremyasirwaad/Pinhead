@@ -3,11 +3,10 @@ import "../../components/header/headerPrimary.css";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import { useNavigate } from "react-router-dom";
+import { signInWithGoogle } from "../../firebase";
 
 function HeaderPrimary() {
 	var navigate = useNavigate();
-
-	
 
 	return (
 		<div className="headerPrimary">
@@ -43,8 +42,15 @@ function HeaderPrimary() {
 				<div className="cartDiv">
 					<ShoppingCartOutlinedIcon className="icon" />
 				</div>
-				<div className="login button">Log In</div>
-				<div className="signup button">Sign up</div>
+				<div
+					className="login button"
+					onClick={() => {
+						navigate("/login");
+					}}
+				>
+					Log In
+				</div>
+				<div className="signup button"> Sign up</div>
 			</div>
 		</div>
 	);

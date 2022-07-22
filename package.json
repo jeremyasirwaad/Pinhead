@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "@testing-library/jest-dom": "^4.2.4",
@@ -10,6 +13,7 @@
     "@testing-library/user-event": "^7.2.1",
     "dotenv": "^16.0.1",
     "exec": "^0.2.1",
+    "firebase": "^9.9.0",
     "instantsearch.css": "^7.4.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -23,7 +27,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "startport":"PORT=80 react-scripts start",
+    "startport": "PORT=80 react-scripts start",
     "buildport": "PORT=80 react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
