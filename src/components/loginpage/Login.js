@@ -1,13 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
 import HeaderPrimary from "../header/headerPrimary";
 import HeaderPopup from "../header/headerPopup";
 import Footer from "../footer/footer";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { signInWithGoogle } from "../../firebase";
+import { GoogleButton } from "react-google-button";
+import { UserAuth } from "../AuthContext";
 
 import "./Login.css";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
+	const navigate = useNavigate();
+	const { googleSignIn, user, isauthenticated } = UserAuth();
+
+	const handlesignIn = async () => {
+		try {
+			await googleSignIn();
+
+			// navigate("/search");
+		} catch (err) {
+			isauthenticated();
+			console.log(err);
+		}
+	};
+
+	useEffect(() => {
+		if (user != null) {
+			navigate("/");
+		}
+	}, [user]);
+
 	return (
 		<div>
 			<HeaderPopup />
@@ -32,7 +54,7 @@ export const Login = () => {
 						Dont have an account ? <span>SignUp</span>{" "}
 					</span>
 					<div className="divider"></div>
-					<div
+					{/* <div
 						className="googlelibtn"
 						onClick={() => {
 							signInWithGoogle();
@@ -43,7 +65,12 @@ export const Login = () => {
 							alt=""
 						/>
 						<span>Sign in with google</span>{" "}
-					</div>
+					</div> */}
+					<GoogleButton
+						onClick={() => {
+							googleSignIn();
+						}}
+					></GoogleButton>
 				</div>
 			</div>
 			<Footer></Footer>

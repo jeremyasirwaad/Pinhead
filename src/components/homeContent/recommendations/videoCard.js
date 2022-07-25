@@ -3,10 +3,18 @@ import "./videoCard.css";
 import StarIcon from "@material-ui/icons/Star";
 // import StarBorderIcon from "@material-ui/icons/StarBorder";
 import StarHalfIcon from "@material-ui/icons/StarHalf";
+import { useNavigate } from "react-router-dom";
 
 function VideoCard(props) {
+	const navigate = useNavigate();
+
 	return (
-		<div className="videoCard">
+		<div
+			className="videoCard"
+			onClick={() => {
+				navigate("/courses/123");
+			}}
+		>
 			<img className="courseImg" src={props.imgSrc} alt="courseImg"></img>
 			<h3>{props.courseTitle}</h3>
 			<p>{props.instructor}</p>

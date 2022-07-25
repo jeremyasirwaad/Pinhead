@@ -26,18 +26,27 @@ import {
 	Link,
 	Outlet
 } from "react-router-dom";
+import { AuthContextProvider } from "./components/AuthContext";
+import { Coursepage } from "./components/CoursePage/Coursepage";
+// import { supabase } from "./Supabase";
 
 function App() {
 	return (
-		<Router>
-			<Routes>
-				<Route path="/" element={<Home />} />
-				<Route path="/search" element={<Search />} />
-				<Route path="/login" element={<Login />}></Route>
-				{/* <Route path="invoices" element={<Invoices />} /> */}
-				{/* <Route path="dashboard" element={<Dashboard />} /> */}
-			</Routes>
-		</Router>
+		<AuthContextProvider>
+			<Router>
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/search" element={<Search />} />
+					<Route path="/login" element={<Login />}></Route>
+					<Route
+						path="/courses/:id"
+						element={<Coursepage></Coursepage>}
+					></Route>
+					{/* <Route path="invoices" element={<Invoices />} /> */}
+					{/* <Route path="dashboard" element={<Dashboard />} /> */}
+				</Routes>
+			</Router>
+		</AuthContextProvider>
 	);
 }
 

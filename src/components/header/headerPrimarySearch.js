@@ -9,7 +9,9 @@ function HeaderPrimarySearch() {
 			<div className="left part">
 				<div className="udemyLogo">
 					{/* <img src="..//logo.jpg" className="logo" alt="logo"></img> */}
-					<h3 style={{ fontSize: "28px" }}>99Tech.</h3>
+					<h3 style={{ fontSize: "28px" }} onClick={() => {}}>
+						99Tech.
+					</h3>
 				</div>
 				<div className="categoriesDiv">
 					<span className="categories">Categories</span>
