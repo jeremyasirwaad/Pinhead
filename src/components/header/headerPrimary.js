@@ -56,7 +56,12 @@ function HeaderPrimary() {
 				<div className="businessDiv">
 					<span className="teach">Teach on 99Tech</span>
 				</div> */}
-				<div className="cartDiv">
+				<div
+					className="cartDiv"
+					onClick={() => {
+						navigate("/cart");
+					}}
+				>
 					<ShoppingCartOutlinedIcon className="icon" />
 				</div>
 				{user ? (

@@ -30,6 +30,7 @@ import {
 import { AuthContextProvider } from "./components/AuthContext";
 import { Paymentsuccessfulpahe } from "./components/Stripe/Paymentsuccessfulpahe";
 import { Coursepage } from "./components/CoursePage/Coursepage";
+import { Cart } from "./components/cart/Cart";
 // import { supabase } from "./Supabase";
 
 function App() {
@@ -45,7 +46,11 @@ function App() {
 						element={<Coursepage></Coursepage>}
 					></Route>
 					<Route path="/checkout/" element={<StripeCheckOut />}></Route>
-					<Route path="/Paymetsuccessfull" element={<Paymentsuccessfulpahe></Paymentsuccessfulpahe>}></Route>
+					<Route path="/cart" element={<Cart />}></Route>
+					<Route
+						path="/Paymetsuccessfull"
+						element={<Paymentsuccessfulpahe></Paymentsuccessfulpahe>}
+					></Route>
 					{/* <Route path="invoices" element={<Invoices />} /> */}
 					{/* <Route path="dashboard" element={<Dashboard />} /> */}
 				</Routes>
