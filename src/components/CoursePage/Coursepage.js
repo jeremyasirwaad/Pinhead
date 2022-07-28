@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Footer from "../footer/footer";
 import HeaderPrimary from "../header/headerPrimary";
 import StarRatings from "react-star-ratings";
@@ -9,6 +10,8 @@ import { BsCloudUpload } from "react-icons/bs";
 import { MdOutlineDoubleArrow } from "react-icons/md";
 import "./Coursepage.css";
 export const Coursepage = () => {
+	const navigate = useNavigate();
+
 	return (
 		<div>
 			<HeaderPrimary></HeaderPrimary>
@@ -74,7 +77,14 @@ export const Coursepage = () => {
 							url="https://youtu.be/Vl0H-qTclOg"
 						/>
 
-						<button className="headerbtns">Add to cart</button>
+						<button
+							className="headerbtns"
+							onClick={() => {
+								navigate("/checkout");
+							}}
+						>
+							Add to cart
+						</button>
 						<button className="headerbtns2">Buy now</button>
 					</div>
 				</div>

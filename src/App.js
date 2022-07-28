@@ -19,6 +19,7 @@ import HomeFooter from "./components/HomeFooter";
 // import Footer from "./footer";
 import Home from "./components/Home/Home";
 import { Search } from "./components/Search/Search";
+import StripeCheckOut from "./components/Stripe/StripeContainer";
 import {
 	BrowserRouter as Router,
 	Routes,
@@ -27,6 +28,7 @@ import {
 	Outlet
 } from "react-router-dom";
 import { AuthContextProvider } from "./components/AuthContext";
+import { Paymentsuccessfulpahe } from "./components/Stripe/Paymentsuccessfulpahe";
 import { Coursepage } from "./components/CoursePage/Coursepage";
 // import { supabase } from "./Supabase";
 
@@ -42,6 +44,8 @@ function App() {
 						path="/courses/:id"
 						element={<Coursepage></Coursepage>}
 					></Route>
+					<Route path="/checkout/" element={<StripeCheckOut />}></Route>
+					<Route path="/Paymetsuccessfull" element={<Paymentsuccessfulpahe></Paymentsuccessfulpahe>}></Route>
 					{/* <Route path="invoices" element={<Invoices />} /> */}
 					{/* <Route path="dashboard" element={<Dashboard />} /> */}
 				</Routes>
