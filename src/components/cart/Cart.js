@@ -4,15 +4,17 @@ import Footer from "../footer/footer";
 import { useNavigate } from "react-router-dom";
 import img from "./undraw_Warning_re_eoyh.png";
 import { CartItems } from "./CartItems";
+import HeaderPopup from "../header/headerPopup";
 
 import "./cart.css";
 
 export const Cart = () => {
-	const [isempty, setIsempty] = useState(false);
+	const [isempty, setIsempty] = useState(true);
 	const navigate = useNavigate();
 
 	return (
 		<div>
+			<HeaderPopup></HeaderPopup>
 			<HeaderPrimary></HeaderPrimary>
 			<div className="cartdiv">
 				<p className="headercart">Shopping Cart</p>

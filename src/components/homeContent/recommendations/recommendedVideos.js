@@ -1,6 +1,7 @@
 import React from "react";
 import "./recommendedVideos.css";
 import VideoCard from "./videoCard";
+import Recommended from "../../../mockdata.json";
 
 function RecommendedVideos(props) {
 	return (
@@ -46,7 +47,20 @@ function RecommendedVideos(props) {
 				</div>
 			) : (
 				<div className="recommendedVideos">
-					<VideoCard
+					{Recommended.slice(0, 4).map((e) => {
+						return (
+							<VideoCard
+								courseTitle={e.courseTitle}
+								imgSrc={e.imgSrc}
+								noOfStudents={e.noOfStudents}
+								instructor={e.instructor}
+								rating={e.rating}
+								price={"$" + e.price}
+								id={e.courseId}
+							/>
+						);
+					})}
+					{/* <VideoCard
 						courseTitle={"Microsoft Excel - Excel from Beginner to Advanced"}
 						imgSrc={
 							"https://www.easyredmine.com/ER/media/images/articles/p8/f2742/Excel.jpg?width=1920&height=0&rmode=min&quality=75&token=NXAe7orcv2N5NbhLZcRCU%2BBr0k%2BTgZHdlyw33KHVe8g%3D"
@@ -91,7 +105,7 @@ function RecommendedVideos(props) {
 						rating={4.8}
 						noOfStudents={"(25,489)"}
 						price={"$0.99"}
-					/>
+					/> */}
 				</div>
 			)}
 		</>

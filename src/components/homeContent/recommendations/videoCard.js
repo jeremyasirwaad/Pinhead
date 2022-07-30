@@ -12,7 +12,7 @@ function VideoCard(props) {
 		<div
 			className="videoCard"
 			onClick={() => {
-				navigate("/courses/123");
+				navigate("/courses/" + props.id);
 			}}
 		>
 			<img className="courseImg" src={props.imgSrc} alt="courseImg"></img>
