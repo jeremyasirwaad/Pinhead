@@ -39,6 +39,7 @@
     "start": "react-scripts start",
     "startport": "PORT=80 react-scripts start",
     "buildport": "PORT=80 react-scripts build",
+    "build":"react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "typesense-server": "node scripts/startTypesenseserver.js",
