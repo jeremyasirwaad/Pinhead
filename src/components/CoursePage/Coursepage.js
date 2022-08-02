@@ -8,19 +8,79 @@ import { BsGlobe2 } from "react-icons/bs";
 import { BsCloudUpload } from "react-icons/bs";
 // import { MdOutlineDoubleArrow } from "react-icons/tb";
 import { MdOutlineDoubleArrow } from "react-icons/md";
+import { UserAuth } from "../AuthContext";
 import data from "../../mockdata.json";
+import { supabase } from "../../Supabase";
+import { ToastContainer, toast } from "react-toastify";
+// import toast, { Toaster } from "react-hot-toast";
+import "react-toastify/dist/ReactToastify.css";
 import "./Coursepage.css";
+
 export const Coursepage = () => {
+	const { dbuserobj, cartvalues, user, setcartvalues } = UserAuth();
 	const { id } = useParams();
 	const navigate = useNavigate();
 	const [pagedata, setPagedata] = useState({});
 	const [isloading, setIsloading] = useState(true);
+	// const [inCart, setInCart] = useState("");
+	const [hello, setHello] = useState(false);
 
 	useEffect(() => {
 		setPagedata(data.find((e) => e.courseId == id));
 		setIsloading(false);
-		// console.log(data.filter((e) => e.courseId == id));
+		console.log(dbuserobj);
+		console.log(cartvalues);
 	}, []);
+
+	useEffect(() => {
+		checkincart();
+	});
+
+	const checkincart = () => {
+		// var buffer;
+		cartvalues.forEach((e) => {
+			if (e.courseId == pagedata.courseId) {
+				console.log("Data Exists already");
+				setHello(true);
+			} else {
+				// setHello(false);
+			}
+		});
+	};
+
+	const notify = () =>
+		toast.success("Added to cart", {
+			theme: "dark"
+		});
+
+	const addtocart = async () => {
+		var filterdata = cartvalues.filter((e) => {
+			return e.courseId == pagedata.courseId;
+		});
+
+		toast.success("added to cart", {
+			theme: "dark",
+			autoClose: 3000
+		});
+
+		console.log(filterdata);
+		if (filterdata.length == 0) {
+			setHello(true);
+			cartvalues.push(pagedata);
+			const res = await supabase
+				.from("users")
+				.update({ cart: cartvalues })
+				.match({ email: user.email });
+		} else {
+			navigate("/cart");
+		}
+
+		// cartvalues.push(pagedata);
+		// const res = await supabase
+		// 	.from("users")
+		// 	.update({ cart: cartvalues })
+		// 	.match({ email: user.email });
+	};
 
 	return (
 		<div>
@@ -30,6 +90,7 @@ export const Coursepage = () => {
 			) : (
 				<>
 					<div className="coursecontainer">
+						{/* <Toaster /> */}
 						<div className="courseheadercontainer">
 							<div className="coursetitle">
 								<h2> {pagedata.courseTitle}</h2>
@@ -92,13 +153,28 @@ export const Coursepage = () => {
 
 								<button
 									className="headerbtns"
+									// disabled={inCart}
+									onClick={() => {
+										if (user != null) {
+											// navigate("/login");
+											addtocart();
+										} else {
+											navigate("/login");
+										}
+									}}
+								>
+									{hello ? "Go to cart" : "Add to cart"}
+								</button>
+								{/* <Toaster /> */}
+
+								<button
 									onClick={() => {
 										navigate("/checkout");
 									}}
+									className="headerbtns2"
 								>
-									Add to cart
+									Buy now
 								</button>
-								<button className="headerbtns2">Buy now</button>
 							</div>
 						</div>
 					</div>
@@ -252,7 +328,8 @@ export const Coursepage = () => {
 					</div>
 				</>
 			)}
-
+			{/* <Toaster /> */}
+			<ToastContainer />
 			<Footer></Footer>
 		</div>
 	);

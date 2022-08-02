@@ -3,12 +3,22 @@ import "../../components/header/headerPrimary.css";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import { useNavigate } from "react-router-dom";
-import { signInWithGoogle } from "../../firebase";
+import { signInWithGoogle, auth } from "../../firebase";
 import { UserAuth } from "../AuthContext";
+import { reload, signOut } from "firebase/auth";
 
 function HeaderPrimary() {
-	const { user, logOut } = UserAuth();
+	const { user, setDbuserobj, cartvalues } = UserAuth();
 	var navigate = useNavigate();
+
+	const logOut = () => {
+		setDbuserobj({});
+		localStorage.removeItem("un");
+		localStorage.removeItem("ue");
+
+		signOut(auth);
+		navigate(0);
+	};
 
 	const handleSignOut = async () => {
 		try {
@@ -57,12 +67,19 @@ function HeaderPrimary() {
 					<span className="teach">Teach on 99Tech</span>
 				</div> */}
 				<div
-					className="cartDiv"
+					className="cart position-relative d-inline-flex"
 					onClick={() => {
 						navigate("/cart");
 					}}
 				>
-					<ShoppingCartOutlinedIcon className="icon" />
+					<i
+						class="fas fa fa-shopping-cart fa-lg"
+						style={{ fontSize: "22px" }}
+					></i>
+					<span class="cart-basket d-flex align-items-center justify-content-center">
+						{cartvalues.length}
+					</span>
+					{/* <ShoppingCartOutlinedIcon className="icon" /> */}
 				</div>
 				{user ? (
 					<div style={{ display: "flex", alignItems: "center" }}>
@@ -76,7 +93,9 @@ function HeaderPrimary() {
 						<div
 							className="signup button"
 							onClick={() => {
+								setDbuserobj({});
 								handleSignOut();
+								// reload();
 							}}
 						>
 							Sign Out

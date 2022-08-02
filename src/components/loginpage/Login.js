@@ -5,7 +5,7 @@ import Footer from "../footer/footer";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { GoogleButton } from "react-google-button";
 import { UserAuth } from "../AuthContext";
-
+import toast, { Toaster } from "react-hot-toast";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
 
@@ -34,7 +34,7 @@ export const Login = () => {
 		<div>
 			<HeaderPopup />
 			<HeaderPrimary />
-
+			
 			<div className="loginpage">
 				<div className="logincontainer">
 					<span className="loginheader">Login to your account!</span>

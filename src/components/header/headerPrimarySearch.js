@@ -31,7 +31,8 @@ function HeaderPrimarySearch() {
 					<span className="teach">Teach on 99Tech</span>
 				</div> */}
 				<div className="cartDiv">
-					<ShoppingCartOutlinedIcon className="icon" />
+					{/* <ShoppingCartOutlinedIcon className="icon" /> */}
+					
 				</div>
 				<div className="login button">Log In</div>
 				<div className="signup button">Sign up</div>

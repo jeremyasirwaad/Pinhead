@@ -8,4 +8,4 @@ exec(command, (err) => {
   }
 });
 
-const command1 = `docker run -d -p 80:80 -v/tmp/typesense-server-data/:/data typesense/typesense:0.22.2 --data-dir /data --api-key=xyz --listen-port 80 --enable-cors`;
+const command1 = `docker run -d -p 8108:8108 -v/tmp/typesense-server-data/:/data typesense/typesense:0.22.2 --data-dir /data --api-key=xyz --listen-port 8108 --enable-cors`;

@@ -62,6 +62,18 @@
 
   }
 
+  .headerbtnsdisabled{
+    border: 2px solid white ;
+    width: 350px;
+    height: 50px;
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
+    font-size: 18px;
+    margin: 10px;
+
+  }
+
   .headerbtns:hover{
     background-color: #fa9624;
   }
@@ -168,4 +180,9 @@
     width: 60px;
     margin-top: 7px;
     margin-bottom: 25px;
+  }
+
+  .Toastify__close-button
+  {
+    width: 20px;
   }

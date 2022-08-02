@@ -1,16 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import HeaderPrimary from "../header/headerPrimary";
 import Footer from "../footer/footer";
 import { useNavigate } from "react-router-dom";
 import img from "./undraw_Warning_re_eoyh.png";
 import { CartItems } from "./CartItems";
 import HeaderPopup from "../header/headerPopup";
+// import { useContext, createContext } from "react";
+import { UserAuth } from "../AuthContext";
 
 import "./cart.css";
+// import { useEffect } from "react";
 
 export const Cart = () => {
+	const { dbuserobj, cartvalues, user } = UserAuth();
+
 	const [isempty, setIsempty] = useState(true);
 	const navigate = useNavigate();
+
+	useEffect(() => {
+		if (!user) {
+			navigate("/login");
+		}
+		console.log(dbuserobj);
+	}, []);
+
+	const gettotal = () => {
+		var total = 0.0;
+		cartvalues.forEach((e) => {
+			total = total + parseFloat(e.price);
+		});
+
+		return total.toFixed(2	);
+	};
 
 	return (
 		<div>
@@ -18,7 +39,7 @@ export const Cart = () => {
 			<HeaderPrimary></HeaderPrimary>
 			<div className="cartdiv">
 				<p className="headercart">Shopping Cart</p>
-				{isempty ? (
+				{cartvalues.length == 0 ? (
 					<>
 						<p className="subheadercart">0 Courses in Cart</p>
 						<div className="shoppinginnerdiv">
@@ -44,11 +65,32 @@ export const Cart = () => {
                         "
 						>
 							<div className="shoppingleft">
-								<CartItems></CartItems>
+								{cartvalues.map((e) => {
+									return (
+										<CartItems
+											imgsrc={e.imgSrc}
+											title={e.courseTitle}
+											subtitle={e.discription}
+											rating={e.rating}
+											count={e.noOfStudents}
+											price={e.price}
+											courseId={e.courseId}
+										></CartItems>
+									);
+								})}
+								{/* <CartItems
+									imgsrc=""
+									title=""
+									subtitle=""
+									rating=""
+									count=""
+									price=""
+									courseId=""
+								></CartItems> */}
 							</div>
 							<div className="shopingright">
 								<p className="totalcart">Total:</p>
-								<p className="cartvalue">$5.66</p>
+								<p className="cartvalue">${gettotal()}</p>
 								<button className="checkoutcart">CheckOut</button>
 								<p className="coupontext">Apply coupon</p>
 								<div style={{ display: "flex" }}>

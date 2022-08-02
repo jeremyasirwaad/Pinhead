@@ -1,7 +1,7 @@
 import { useContext, createContext } from "react";
 import React, { useState, useEffect } from "react";
 // import { AlertContainer } from "react-alert";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { supabase } from "../Supabase";
 import MoonLoader from "react-spinners/MoonLoader";
 import {
@@ -12,12 +12,16 @@ import {
 	onAuthStateChanged
 } from "firebase/auth";
 import { auth } from "../firebase";
+import { useHistory } from 'react-router'
 
 const Authcontext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
+	// const navigate = useNavigate();
+	// const history = useHistory()
 	const [user, setUser] = useState({});
 	const [dbuserobj, setDbuserobj] = useState({});
+	const [cartvalues, setcartvalues] = useState([]);
 
 	const isauthenticated = () => {
 		const id = localStorage.getItem("fid");
@@ -60,8 +64,10 @@ export const AuthContextProvider = ({ children }) => {
 	};
 
 	const logOut = () => {
+		setDbuserobj({});
 		localStorage.removeItem("un");
 		localStorage.removeItem("ue");
+
 		signOut(auth);
 	};
 
@@ -71,7 +77,7 @@ export const AuthContextProvider = ({ children }) => {
 		const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
 			setUser(currentuser);
 			// navigate("/");
-			console.log("User", currentuser);
+			// console.log("User", currentuser);
 			setPending(false);
 		});
 		return () => {
@@ -86,8 +92,24 @@ export const AuthContextProvider = ({ children }) => {
 				.select()
 				.match({ email: user.email })
 				.then((res) => {
-					setDbuserobj(res.data);
+					setDbuserobj(res.data[0]);
 					// console.log(res.data);
+					if (res.data[0] != undefined) {
+						var d = res.data[0];
+						if (d.cart == null) {
+							setcartvalues([]);
+						} else {
+							setcartvalues(d.cart);
+						}
+					}
+					// var f = res.data;
+
+					// console.log(f[0].cart);
+					// if (res.data.length != 0) {
+					// 	setcartvalues(dbuserobj.cart);
+					// }
+					// return res.data;
+					// console.log(...res.data);
 				});
 			// console.log(data);
 			// console.log(user.email);
@@ -116,7 +138,17 @@ export const AuthContextProvider = ({ children }) => {
 
 	return (
 		<Authcontext.Provider
-			value={{ googleSignIn, logOut, user, isauthenticated, dbuserobj }}
+			value={{
+				googleSignIn,
+				logOut,
+				user,
+				isauthenticated,
+				dbuserobj,
+				getuserdata,
+				setDbuserobj,
+				cartvalues,
+				setcartvalues
+			}}
 		>
 			{children}
 		</Authcontext.Provider>

@@ -32,6 +32,8 @@ import { Paymentsuccessfulpahe } from "./components/Stripe/Paymentsuccessfulpahe
 import { Coursepage } from "./components/CoursePage/Coursepage";
 import { Cart } from "./components/cart/Cart";
 import ScrollToTop from "./ScrollToTop.js";
+
+
 // import { supabase } from "./Supabase";
 
 function App() {
