@@ -12,11 +12,11 @@ In the root, navigate to /Stripe-server and start the server user "npm start"
 
 ## Step 2
 
-In the root start the typesense docker image using "npm run" typesense-server
+In the root start the typesense docker image using "npm run typesense-server"
 
 ## Step 3
 
-Populate the typesense-server using "npm run" populate in root.
+Populate the typesense-server using "npm run populate" in root.
 
 ## Step 4
 
