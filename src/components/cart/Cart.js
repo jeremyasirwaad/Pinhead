@@ -17,6 +17,15 @@ export const Cart = () => {
 	const [isempty, setIsempty] = useState(true);
 	const navigate = useNavigate();
 
+	const fetchcallcourse = async () => {
+		const data = await fetch("http://localhost:1337/api/courses")
+			.then((res) => res.json())
+			.then((res) => {
+				// setCoursesfromstripe(res.data);
+				console.log(res.data);
+			});
+	}
+
 	useEffect(() => {
 		if (!user) {
 			navigate("/login");
@@ -30,7 +39,7 @@ export const Cart = () => {
 			total = total + parseFloat(e.price);
 		});
 
-		return total.toFixed(2	);
+		return total.toFixed(2);
 	};
 
 	return (
@@ -91,7 +100,14 @@ export const Cart = () => {
 							<div className="shopingright">
 								<p className="totalcart">Total:</p>
 								<p className="cartvalue">${gettotal()}</p>
-								<button className="checkoutcart">CheckOut</button>
+								<button
+									className="checkoutcart"
+									onClick={() => {
+										navigate("/checkoutcard/123");
+									}}
+								>
+									CheckOut
+								</button>
 								<p className="coupontext">Apply coupon</p>
 								<div style={{ display: "flex" }}>
 									<input type="text" className="couponinput" />

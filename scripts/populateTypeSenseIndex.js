@@ -1,5 +1,8 @@
 // loadData.js
+
+const axios = require("axios").default;
 const Typesense = require("typesense");
+
 module.exports = (async () => {
 	const TYPESENSE_CONFIG = {
 		nodes: [
@@ -82,6 +85,13 @@ module.exports = (async () => {
 	};
 
 	const courses = require("./data/mockdata.json");
+
+	// const courses = await (
+	// 	await axios("http://localhost:1337/api/courses/")
+	// ).data.attributes;
+
+	console.log(courses);
+
 	try {
 		const collection = await typesense.collections("courses").retrieve();
 		console.log("Found existing collection of courses");

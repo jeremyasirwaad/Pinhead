@@ -1,12 +1,16 @@
 import React from "react";
 import StarRatings from "react-star-ratings";
-
+import { useNavigate } from "react-router";
 export const CartItems = (props) => {
-
-	
+	const navigate = useNavigate();
 
 	return (
-		<div className="cartitemcon">
+		<div
+			className="cartitemcon"
+			onClick={() => {
+				navigate("/courses/" + props.courseId);
+			}}
+		>
 			<div className="cartitemdiv1">
 				<img src={props.imgsrc} alt="" />
 				<div>

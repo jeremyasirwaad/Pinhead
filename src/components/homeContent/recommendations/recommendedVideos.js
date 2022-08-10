@@ -1,9 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./recommendedVideos.css";
 import VideoCard from "./videoCard";
 import Recommended from "../../../mockdata.json";
 
 function RecommendedVideos(props) {
+	const [featured, setfeatured] = useState([]);
+
+	const getFeatured = async () => {
+		var fadata = await fetch(
+			"http://localhost:1337/api/courses?filters[type][$eq]=Featured"
+		)
+			.then((res) => res.json())
+			.then((result) => {
+				console.log(result.data);
+				setfeatured(result.data);
+			});
+	};
+
+	useEffect(() => {
+		getFeatured();
+	}, []);
+
 	return (
 		<>
 			{props.type == "categories" ? (
@@ -47,16 +64,16 @@ function RecommendedVideos(props) {
 				</div>
 			) : (
 				<div className="recommendedVideos">
-					{Recommended.slice(0, 4).map((e) => {
+					{featured.map((e) => {
 						return (
 							<VideoCard
-								courseTitle={e.courseTitle}
-								imgSrc={e.imgSrc}
-								noOfStudents={e.noOfStudents}
-								instructor={e.instructor}
-								rating={e.rating}
-								price={"$" + e.price}
-								id={e.courseId}
+								courseTitle={e.attributes.courseTitle}
+								imgSrc={e.attributes.imgSrc}
+								noOfStudents={e.attributes.noOfStudents}
+								instructor={e.attributes.instructor}
+								rating={e.attributes.rating}
+								price={"$" + e.attributes.price}
+								id={e.id}
 							/>
 						);
 					})}

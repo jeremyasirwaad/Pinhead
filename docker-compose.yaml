@@ -1,0 +1,20 @@
+version:"3.8"
+services:
+  CMS:
+    build: ./CMS      port: 
+        - "1337:1337"
+      volumes: 
+        - ./
+      
+    front-end:
+      build: ./
+      ports:
+        - "3000:3000"
+      volumes:
+        - ./
+
+      stdin_open: true
+      tty: true
+      depends_on:
+        - CMS
+

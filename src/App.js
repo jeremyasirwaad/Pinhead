@@ -31,8 +31,8 @@ import { AuthContextProvider } from "./components/AuthContext";
 import { Paymentsuccessfulpahe } from "./components/Stripe/Paymentsuccessfulpahe";
 import { Coursepage } from "./components/CoursePage/Coursepage";
 import { Cart } from "./components/cart/Cart";
+import StripeCheckOutonlycard from "./components/Stripe/Stripecontaineronlycard";
 import ScrollToTop from "./ScrollToTop.js";
-
 
 // import { supabase } from "./Supabase";
 
@@ -49,7 +49,11 @@ function App() {
 						path="/courses/:id"
 						element={<Coursepage></Coursepage>}
 					></Route>
-					<Route path="/checkout/" element={<StripeCheckOut />}></Route>
+					<Route path="/checkout/:id" element={<StripeCheckOut />}></Route>
+					<Route
+						path="/checkoutcard/:id"
+						element={<StripeCheckOutonlycard />}
+					></Route>
 					<Route path="/cart" element={<Cart />}></Route>
 					<Route
 						path="/Paymetsuccessfull"

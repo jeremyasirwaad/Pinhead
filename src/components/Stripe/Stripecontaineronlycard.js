@@ -7,6 +7,7 @@ import VideoCard from "../homeContent/recommendations/videoCard";
 import { useParams } from "react-router";
 import CheckoutForm from "./PaymentForms";
 import "./paymentform.css";
+import { async } from "@firebase/util";
 
 // Make sure to call loadStripe outside of a component’s render to avoid
 // recreating the Stripe object on every render.
@@ -15,38 +16,31 @@ const stripePromise = loadStripe(
 	"pk_test_51LQ3K2SIj4u97KeSpn728pRdTBKjEge8exIESNlDCYlvhmLgSk9HpjxsRUHRbilAdrFOHfUQpE1IcqxyxkU6KKI8002OOKAfa9"
 );
 
-export default function StripeCheckOut() {
+export default function StripeCheckOutonlycard() {
 	const { id } = useParams();
-	const [clientSecret, setClientSecret] = useState("");
 	const [pagedata, setPagedata] = useState({});
+	const [clientSecret, setClientSecret] = useState("");
 
 	const getdata = async () => {
 		var fadata = await fetch("http://localhost:1337/api/courses/" + id)
 			.then((res) => res.json())
 			.then((result) => {
-				console.log(result.data.attributes);
-				setPagedata(result.data);
-
+				// console.log(result.data.attributes);
+				setPagedata({ ...result.data.attributes, courseId: result.data.id });
 				// setIsloading(false);
 			});
 	};
 
 	useEffect(() => {
-		getdata();
-		console.log(pagedata.id);
+		// getdata();
 		// Create PaymentIntent as soon as the page loads
-		const tosend = {
-			id: id
-		};
-		if (pagedata) {
-			fetch("http://localhost:4242/create-payment-intent", {
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify(tosend)
-			})
-				.then((res) => res.json())
-				.then((data) => setClientSecret(data.clientSecret));
-		}
+		fetch("http://localhost:4242/create-payment-intent", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ items: ["xl-shirt"] })
+		})
+			.then((res) => res.json())
+			.then((data) => setClientSecret(data.clientSecret));
 	}, []);
 
 	const appearance = {
@@ -81,13 +75,7 @@ export default function StripeCheckOut() {
 								padding: "25px"
 								// borderBottom: "1px solid black"
 							}}
-						>
-							<div>
-								<h3>Microsoft Excel - Excel from Beginner to Advanced</h3>
-								<h5>Author - Jeremy</h5>
-							</div>
-							<span> $0.99</span>
-						</div>
+						></div>
 						<div
 							style={{
 								display: "flex",
@@ -96,11 +84,7 @@ export default function StripeCheckOut() {
 								padding: "25px",
 								borderTop: "1px solid black"
 							}}
-						>
-							{" "}
-							<span>Total</span>
-							<span>$0.99</span>{" "}
-						</div>
+						></div>
 					</div>
 				</div>
 				<div style={{ width: "180px" }}></div>

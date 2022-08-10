@@ -9,7 +9,7 @@ import { BsCloudUpload } from "react-icons/bs";
 // import { MdOutlineDoubleArrow } from "react-icons/tb";
 import { MdOutlineDoubleArrow } from "react-icons/md";
 import { UserAuth } from "../AuthContext";
-import data from "../../mockdata.json";
+// import data from "../../mockdata.json";
 import { supabase } from "../../Supabase";
 import { ToastContainer, toast } from "react-toastify";
 // import toast, { Toaster } from "react-hot-toast";
@@ -26,11 +26,23 @@ export const Coursepage = () => {
 	const [hello, setHello] = useState(false);
 
 	useEffect(() => {
-		setPagedata(data.find((e) => e.courseId == id));
-		setIsloading(false);
+		// setPagedata(data.find((e) => e.courseId == id));
+
 		console.log(dbuserobj);
 		console.log(cartvalues);
+		getpagedata();
+		// console.log(pagedata);
 	}, []);
+
+	const getpagedata = async () => {
+		var fadata = await fetch("http://localhost:1337/api/courses/" + id)
+			.then((res) => res.json())
+			.then((result) => {
+				console.log(result.data.attributes);
+				setPagedata({ ...result.data.attributes, courseId: result.data.id });
+				setIsloading(false);
+			});
+	};
 
 	useEffect(() => {
 		checkincart();
@@ -169,7 +181,7 @@ export const Coursepage = () => {
 
 								<button
 									onClick={() => {
-										navigate("/checkout");
+										navigate("/checkout/"+ id);
 									}}
 									className="headerbtns2"
 								>
