@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { signInWithGoogle, auth } from "../../firebase";
 import { UserAuth } from "../AuthContext";
 import { reload, signOut } from "firebase/auth";
+import { BsSave2Fill } from "react-icons/bs";
 
 function HeaderPrimary() {
 	const { user, setDbuserobj, cartvalues } = UserAuth();
@@ -82,12 +83,41 @@ function HeaderPrimary() {
 					{/* <ShoppingCartOutlinedIcon className="icon" /> */}
 				</div>
 				{user ? (
-					<div style={{ display: "flex", alignItems: "center" }}>
+					<div
+						style={{
+							display: "flex",
+							alignItems: "center",
+							justifyContent: "space-evenly"
+						}}
+					>
 						<div>
 							{" "}
 							{/* <p>{user.displayName}</p>{" "} */}
-							<div style={{ padding: "10px", cursor: "pointer" }}>
+							<div
+								style={{
+									padding: "10px",
+									cursor: "pointer",
+									display: "flex",
+									// alignItems: "center",
+									justifyContent: "space-evenly"
+								}}
+							>
+								<p
+									style={{ marginRight: "20px" }}
+									onClick={() => {
+										navigate("/mylearnings");
+									}}
+								>
+									My learnings
+								</p>
 								<p> {user.displayName}</p>
+
+								{/* <div className="accountdropdown">
+									<div style={{ display: "flex", alignItems: "center" }}>
+										<BsSave2Fill></BsSave2Fill>
+										<span>My Courses</span>
+									</div>
+								</div> */}
 							</div>
 						</div>
 						<div

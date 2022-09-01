@@ -4,6 +4,7 @@ import {
 	useStripe,
 	useElements
 } from "@stripe/react-stripe-js";
+import { useNavigate } from "react-router";
 
 export default function CheckoutForm() {
 	const stripe = useStripe();
@@ -13,6 +14,7 @@ export default function CheckoutForm() {
 	const [message, setMessage] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
 
+	const navigate = useNavigate();
 	useEffect(() => {
 		if (!stripe) {
 			return;
@@ -29,6 +31,9 @@ export default function CheckoutForm() {
 		stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
 			switch (paymentIntent.status) {
 				case "succeeded":
+					// console.log("Done");
+					// alert("done");
+					// navigate("/");
 					setMessage("Payment succeeded!");
 					break;
 				case "processing":
@@ -58,11 +63,14 @@ export default function CheckoutForm() {
 		const { error } = await stripe.confirmPayment({
 			elements,
 			confirmParams: {
-				// Make sure to change this to your payment completion page
 				return_url: "http://localhost:3000/Paymetsuccessfull",
 				receipt_email: email
 			}
 		});
+
+		// console.log(error);
+
+		// console.log(data);
 
 		// This point will only be reached if there is an immediate error when
 		// confirming the payment. Otherwise, your customer will be redirected to

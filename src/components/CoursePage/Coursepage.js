@@ -181,7 +181,7 @@ export const Coursepage = () => {
 
 								<button
 									onClick={() => {
-										navigate("/checkout/"+ id);
+										navigate("/checkout/" + id);
 									}}
 									className="headerbtns2"
 								>

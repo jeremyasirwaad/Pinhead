@@ -42,7 +42,8 @@ export default function StripeCheckOut() {
 			fetch("http://localhost:4242/create-payment-intent", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify(tosend)
+				// body: JSON.stringify(tosend)
+				body: JSON.stringify({ })
 			})
 				.then((res) => res.json())
 				.then((data) => setClientSecret(data.clientSecret));

@@ -33,6 +33,8 @@ import { Coursepage } from "./components/CoursePage/Coursepage";
 import { Cart } from "./components/cart/Cart";
 import StripeCheckOutonlycard from "./components/Stripe/Stripecontaineronlycard";
 import ScrollToTop from "./ScrollToTop.js";
+import { Mylearnings } from "./components/Mylearnings/Mylearnings";
+import { Videocourse } from "./components/Videocourse/Videocourse";
 
 // import { supabase } from "./Supabase";
 
@@ -43,6 +45,7 @@ function App() {
 				<ScrollToTop />
 				<Routes>
 					<Route path="/" element={<Home />} />
+					<Route path="/mylearnings" element={<Mylearnings />}></Route>
 					<Route path="/search" element={<Search />} />
 					<Route path="/login" element={<Login />}></Route>
 					<Route
@@ -58,6 +61,10 @@ function App() {
 					<Route
 						path="/Paymetsuccessfull"
 						element={<Paymentsuccessfulpahe></Paymentsuccessfulpahe>}
+					></Route>
+					<Route
+						path="/videocourse"
+						element={<Videocourse></Videocourse>}
 					></Route>
 					{/* <Route path="invoices" element={<Invoices />} /> */}
 					{/* <Route path="dashboard" element={<Dashboard />} /> */}
