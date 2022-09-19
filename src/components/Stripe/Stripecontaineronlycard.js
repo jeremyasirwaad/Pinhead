@@ -31,17 +31,7 @@ export default function StripeCheckOutonlycard() {
 			});
 	};
 
-	useEffect(() => {
-		// getdata();
-		// Create PaymentIntent as soon as the page loads
-		fetch("http://localhost:4242/create-payment-intent", {
-			method: "POST",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify({ })
-		})
-			.then((res) => res.json())
-			.then((data) => setClientSecret(data.clientSecret));
-	}, []);
+	useEffect(() => {}, []);
 
 	const appearance = {
 		theme: "stripe"
@@ -88,14 +78,6 @@ export default function StripeCheckOutonlycard() {
 					</div>
 				</div>
 				<div style={{ width: "180px" }}></div>
-				<div className="cardcontainer">
-					{" "}
-					{clientSecret && (
-						<Elements options={options} stripe={stripePromise}>
-							<CheckoutForm />
-						</Elements>
-					)}
-				</div>
 			</div>
 
 			<Footer></Footer>

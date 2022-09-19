@@ -59,7 +59,7 @@ function App() {
 					></Route>
 					<Route path="/cart" element={<Cart />}></Route>
 					<Route
-						path="/Paymetsuccessfull"
+						path="/Paymentsuccessfull/:razorid"
 						element={<Paymentsuccessfulpahe></Paymentsuccessfulpahe>}
 					></Route>
 					<Route

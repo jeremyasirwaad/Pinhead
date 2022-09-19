@@ -24,7 +24,7 @@ export const Cart = () => {
 				// setCoursesfromstripe(res.data);
 				console.log(res.data);
 			});
-	}
+	};
 
 	useEffect(() => {
 		if (!user) {
@@ -103,10 +103,40 @@ export const Cart = () => {
 								<button
 									className="checkoutcart"
 									onClick={() => {
-										navigate("/checkoutcard/123");
+										var option = {
+											key: "rzp_test_ynbYY4ADcG3lN5",
+											key_secret: "tO6B46MLG6oPOTd1tMHt24hS",
+											amount: gettotal() * 100,
+											currency: "USD",
+											name: user.displayName,
+											description: "for testing purpose",
+											handler: function (response) {
+												if (response.razorpay_payment_id) {
+													navigate(
+														"/Paymentsuccessfull/" +
+															response.razorpay_payment_id
+													);
+												} else {
+													alert("Payment Failed, Try again");
+												}
+											},
+											prefill: {
+												name: user.displayName,
+												email: user.email,
+												contact: "9843632220"
+											},
+											notes: {
+												address: "Razorpay Corporate office"
+											},
+											theme: {
+												color: "#3399cc"
+											}
+										};
+										var pay = new window.Razorpay(option);
+										pay.open();
 									}}
 								>
-									CheckOut
+									Buy Now
 								</button>
 								<p className="coupontext">Apply coupon</p>
 								<div style={{ display: "flex" }}>
