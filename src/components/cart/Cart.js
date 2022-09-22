@@ -7,12 +7,14 @@ import { CartItems } from "./CartItems";
 import HeaderPopup from "../header/headerPopup";
 // import { useContext, createContext } from "react";
 import { UserAuth } from "../AuthContext";
+import { supabase } from "../../Supabase";
 
 import "./cart.css";
 // import { useEffect } from "react";
 
 export const Cart = () => {
-	const { dbuserobj, cartvalues, user } = UserAuth();
+	const { dbuserobj, cartvalues, user, mylearnings, setcartvalues } =
+		UserAuth();
 
 	const [isempty, setIsempty] = useState(true);
 	const navigate = useNavigate();
@@ -27,6 +29,7 @@ export const Cart = () => {
 	};
 
 	useEffect(() => {
+		console.log(mylearnings);
 		if (!user) {
 			navigate("/login");
 		}
@@ -110,8 +113,21 @@ export const Cart = () => {
 											currency: "USD",
 											name: user.displayName,
 											description: "for testing purpose",
-											handler: function (response) {
+											handler: function async(response) {
 												if (response.razorpay_payment_id) {
+													// const pushtomyleanings = await supabase
+
+													if (mylearnings == []) {
+														const pushtomylearining = supabase
+															.from("users")
+															.update({ mylearnings: cartvalues })
+															.match({ email: user.email });
+
+														setcartvalues([]);
+													} else {
+														alert("wait code is building");
+													}
+
 													navigate(
 														"/Paymentsuccessfull/" +
 															response.razorpay_payment_id

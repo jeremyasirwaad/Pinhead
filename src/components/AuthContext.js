@@ -12,7 +12,7 @@ import {
 	onAuthStateChanged
 } from "firebase/auth";
 import { auth } from "../firebase";
-import { useHistory } from 'react-router'
+import { useHistory } from "react-router";
 
 const Authcontext = createContext();
 
@@ -22,6 +22,7 @@ export const AuthContextProvider = ({ children }) => {
 	const [user, setUser] = useState({});
 	const [dbuserobj, setDbuserobj] = useState({});
 	const [cartvalues, setcartvalues] = useState([]);
+	const [mylearnings, setMylearnings] = useState([]);
 
 	const isauthenticated = () => {
 		const id = localStorage.getItem("fid");
@@ -116,8 +117,28 @@ export const AuthContextProvider = ({ children }) => {
 		}
 	};
 
+	const getmycourses = async () => {
+		if (user) {
+			const data = await supabase
+				.from("users")
+				.select()
+				.match({ email: user.email });
+			if (data.data[0] != undefined) {
+				if (data.data[0].mylearning == []) {
+					setMylearnings([]);
+				} else {
+					setMylearnings(data.data[0].mylearning);
+					console.log(data.data[0].mylearning);
+				}
+			}
+
+			// console.log(data);
+		}
+	};
+
 	useEffect(() => {
 		getuserdata();
+		getmycourses();
 	}, [user]);
 
 	if (pending) {
@@ -147,7 +168,9 @@ export const AuthContextProvider = ({ children }) => {
 				getuserdata,
 				setDbuserobj,
 				cartvalues,
-				setcartvalues
+				setcartvalues,
+				getmycourses,
+				mylearnings
 			}}
 		>
 			{children}

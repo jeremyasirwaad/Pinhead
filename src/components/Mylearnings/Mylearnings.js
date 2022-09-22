@@ -3,7 +3,16 @@ import HeaderPrimary from "../header/headerPrimary";
 import Footer from "../footer/footer";
 import VideoCard from "../homeContent/recommendations/videoCard";
 import "./mylearning.css";
+import { useContext, useEffect } from "react";
+import { UserAuth } from "../AuthContext";
+
 export const Mylearnings = () => {
+	const { getmycourses, Mylearnings } = UserAuth();
+
+	useEffect(() => {
+		// getmycourses();
+	}, []);
+
 	return (
 		<div>
 			<HeaderPrimary></HeaderPrimary>
