@@ -20,6 +20,7 @@
     "firebase": "^9.9.0",
     "instantsearch.css": "^7.4.5",
     "node-fetch": "^3.2.10",
+    "pg": "^8.8.0",
     "react": "^16.13.1",
     "react-alert": "^7.0.3",
     "react-dom": "^16.13.1",
