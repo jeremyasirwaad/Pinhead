@@ -78,4 +78,4 @@ export default App;
 
 
 
-git remote add origin https://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@github.com/jeremyasirwaad/Pinhead.git
+git remote add origin https://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@github.com/jeremyasirwaad/Pinhead.git
