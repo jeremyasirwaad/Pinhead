@@ -11,7 +11,7 @@ function CoursesHits({ hits }) {
 	}, []);
 
 	const getcourses = async () => {
-		const data = await fetch("http://localhost:1337/api/courses")
+		const data = await fetch("http://159.89.175.100/api/courses/")
 			.then((res) => res.json())
 			.then((res) => {
 				setCoursesfromstripe(res.data);

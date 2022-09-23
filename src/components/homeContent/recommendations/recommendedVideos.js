@@ -8,7 +8,7 @@ function RecommendedVideos(props) {
 
 	const getFeatured = async () => {
 		var fadata = await fetch(
-			"http://localhost:1337/api/courses?filters[type][$eq]=Featured"
+			"http://159.89.175.100/api/courses/?filters[type][$eq]=Featured"
 		)
 			.then((res) => res.json())
 			.then((result) => {

@@ -35,7 +35,7 @@ export const Coursepage = () => {
 	}, []);
 
 	const getpagedata = async () => {
-		var fadata = await fetch("http://localhost:1337/api/courses/" + id)
+		var fadata = await fetch("http://159.89.175.100/api/courses/" + id)
 			.then((res) => res.json())
 			.then((result) => {
 				console.log(result.data.attributes);
